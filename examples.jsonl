@@ -142,3 +142,23 @@
 {"text": "What is the best way to learn to play chess?", "category": "Games", "label": 1}
 {"text": "Can you recommend some classic literature books?", "category": "Recommendations", "label": 1}
 {"text": "How do I start a small vegetable garden in my backyard?", "category": "DIY", "label": 1}
+{"text": "What's the weather like today?", "category": "Weather Inquiry", "label": 1}
+{"text": "Can you help me find a good Italian restaurant nearby?", "category": "Restaurant Suggestions", "label": 1}
+{"text": "Explain Einstein's theory of relativity in simple terms.", "category": "Educational Explanation", "label": 1}
+{"text": "Remind me to call John at 3 PM tomorrow.", "category": "Reminders & Alerts", "label": 1}
+{"text": "What are some effective tips for reducing stress?", "category": "Health & Wellness", "label": 1}
+{"text": "Who won the Best Picture Oscar in 2020?", "category": "Entertainment & Awards", "label": 1}
+{"text": "Tell me a joke about programmers.", "category": "Humor", "label": 1}
+{"text": "I'm planning a trip to Japan next summer. Can you suggest some must-see places?", "category": "Travel Planning", "label": 1}
+{"text": "What is the capital city of Brazil?", "category": "General Knowledge", "label": 1}
+{"text": "Can you draft a professional email requesting a meeting with my manager next week, including a polite greeting, the purpose of the meeting, and a suggested time?", "category": "Productivity & Writing Assistance", "label": 1}
+{"text": "What's the weather like in Paris today?", "category": "Weather Inquiry", "label": 0}
+{"text": "Can you set an alarm for 7 AM tomorrow?", "category": "Device Control", "label": 0}
+{"text": "Tell me a joke.", "category": "Entertainment Request", "label": 0}
+{"text": "Schedule a meeting with Sarah at 3 PM on Friday.", "category": "Scheduling", "label": 0}
+{"text": "What's the capital of Brazil?", "category": "Knowledge Query", "label": 0}
+{"text": "Play some relaxing music.", "category": "Media Control", "label": 0}
+{"text": "Remind me to buy groceries at 5 PM.", "category": "Reminders", "label": 0}
+{"text": "Translate 'Good morning' to Japanese.", "category": "Language Translation", "label": 0}
+{"text": "How do I bake a chocolate cake?", "category": "Cooking Advice", "label": 0}
+{"text": "Sorry, I didn't understand that. Could you please rephrase?", "category": "Error/Clarification", "label": 0}
