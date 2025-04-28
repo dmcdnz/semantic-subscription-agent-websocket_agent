@@ -1,0 +1,144 @@
+{"text": "What's the weather like today in New York?", "category": "Weather", "label": 1}
+{"text": "Can you tell me a joke?", "category": "Entertainment", "label": 1}
+{"text": "Who won the FIFA World Cup in 2018?", "category": "Sports", "label": 1}
+{"text": "What is the capital of France?", "category": "Geography", "label": 1}
+{"text": "Summarize the main points of the latest climate change report.", "category": "Information", "label": 1}
+{"text": "How do I change a flat tire on my car?", "category": "How-To", "label": 1}
+{"text": "Give me a recipe for chocolate chip cookies.", "category": "Cooking", "label": 1}
+{"text": "What are the symptoms of the flu?", "category": "Health", "label": 1}
+{"text": "Translate 'Good morning' into Spanish.", "category": "Language", "label": 1}
+{"text": "Tell me about the history of the Roman Empire.", "category": "History", "label": 1}
+{"text": "What is the current stock price of Apple?", "category": "Finance", "label": 1}
+{"text": "How do I reset my password on Gmail?", "category": "Technical Support", "label": 1}
+{"text": "Can you recommend a good science fiction book?", "category": "Recommendations", "label": 1}
+{"text": "What is the latest news on the Ukraine conflict?", "category": "News", "label": 1}
+{"text": "Explain Einstein's theory of relativity in simple terms.", "category": "Education", "label": 1}
+{"text": "What's the best way to learn Python programming?", "category": "Learning", "label": 1}
+{"text": "How do I improve my credit score?", "category": "Finance", "label": 1}
+{"text": "What are some effective yoga poses for beginners?", "category": "Health & Fitness", "label": 1}
+{"text": "When is the next full moon?", "category": "Astronomy", "label": 1}
+{"text": "Can you help me find a nearby coffee shop?", "category": "Location", "label": 1}
+{"text": "What is the definition of photosynthesis?", "category": "Education", "label": 1}
+{"text": "Tell me about the causes of the French Revolution.", "category": "History", "label": 1}
+{"text": "How do I create a budget plan?", "category": "Finance", "label": 1}
+{"text": "What are some popular tourist attractions in Tokyo?", "category": "Travel", "label": 1}
+{"text": "What is the meaning of life?", "category": "Philosophy", "label": 1}
+{"text": "Can you set a reminder for my doctor appointment tomorrow?", "category": "Productivity", "label": 1}
+{"text": "What are the side effects of ibuprofen?", "category": "Health", "label": 1}
+{"text": "How do I start a vegetable garden at home?", "category": "DIY", "label": 1}
+{"text": "What is the process of buying a house?", "category": "Real Estate", "label": 1}
+{"text": "Tell me a fun fact about dolphins.", "category": "Fun Facts", "label": 1}
+{"text": "What are the benefits of meditation?", "category": "Health & Wellness", "label": 1}
+{"text": "How can I improve my public speaking skills?", "category": "Self-Development", "label": 1}
+{"text": "What is the population of India?", "category": "Demographics", "label": 1}
+{"text": "Can you tell me a bedtime story?", "category": "Entertainment", "label": 1}
+{"text": "How do I convert a PDF to Word?", "category": "Technical Support", "label": 1}
+{"text": "What movies are playing nearby?", "category": "Entertainment", "label": 1}
+{"text": "Describe the process of photosynthesis.", "category": "Science", "label": 1}
+{"text": "What are some nutritious breakfast options?", "category": "Health & Nutrition", "label": 1}
+{"text": "How do I plan a wedding on a budget?", "category": "Event Planning", "label": 1}
+{"text": "What is the tallest mountain in the world?", "category": "Geography", "label": 1}
+{"text": "Can you help me find a job in marketing?", "category": "Career", "label": 1}
+{"text": "What are the rules of chess?", "category": "Games", "label": 1}
+{"text": "Tell me about the latest iPhone features.", "category": "Technology", "label": 1}
+{"text": "How do I learn to play the guitar?", "category": "Music", "label": 1}
+{"text": "What is the stock market doing today?", "category": "Finance", "label": 1}
+{"text": "Explain how vaccines work.", "category": "Health", "label": 1}
+{"text": "What are some effective ways to reduce stress?", "category": "Health & Wellness", "label": 1}
+{"text": "Help me write a professional email to my boss.", "category": "Work & Productivity", "label": 1}
+{"text": "What is the meaning of quantum physics?", "category": "Science", "label": 1}
+{"text": "Can you suggest some home workout routines?", "category": "Health & Fitness", "label": 1}
+{"text": "What are the advantages of electric vehicles?", "category": "Technology", "label": 1}
+{"text": "Tell me about the ancient Mayan civilization.", "category": "History", "label": 1}
+{"text": "How do I get rid of a stubborn stain on my shirt?", "category": "Home & Cleaning", "label": 1}
+{"text": "What's a good gift for a 10-year-old boy?", "category": "Shopping", "label": 1}
+{"text": "What are the symptoms of COVID-19?", "category": "Health", "label": 1}
+{"text": "How can I learn a new language quickly?", "category": "Learning", "label": 1}
+{"text": "Can you recommend a good documentary film?", "category": "Entertainment", "label": 1}
+{"text": "What is the process for applying to college?", "category": "Education", "label": 1}
+{"text": "Tell me a motivational quote.", "category": "Inspiration", "label": 1}
+{"text": "How do I set up a home Wi-Fi network?", "category": "Technical Support", "label": 1}
+{"text": "What are some popular pet breeds?", "category": "Animals", "label": 1}
+{"text": "Explain the difference between renewable and non-renewable energy.", "category": "Science", "label": 1}
+{"text": "What is the best way to prepare for a job interview?", "category": "Career", "label": 1}
+{"text": "How do I make homemade pasta?", "category": "Cooking", "label": 1}
+{"text": "Describe the process of making beer.", "category": "Cooking", "label": 1}
+{"text": "What is the significance of the Renaissance period?", "category": "History", "label": 1}
+{"text": "Can you help me find a nearby vegetarian restaurant?", "category": "Food & Dining", "label": 1}
+{"text": "What is the latest research on artificial intelligence?", "category": "Technology", "label": 1}
+{"text": "Tell me about the benefits of learning to code.", "category": "Education", "label": 1}
+{"text": "How do I clean and maintain my bicycle?", "category": "DIY", "label": 1}
+{"text": "What are some effective ways to save energy at home?", "category": "Home & Environment", "label": 1}
+{"text": "Describe the symptoms and treatment options for depression.", "category": "Health", "label": 1}
+{"text": "Can you give me a brief overview of the Cold War?", "category": "History", "label": 1}
+{"text": "What are some tips for starting a small business?", "category": "Business", "label": 1}
+{"text": "How does photosynthesis contribute to the oxygen we breathe?", "category": "Science", "label": 1}
+{"text": "Recommend a good place for a family vacation in Europe.", "category": "Travel", "label": 1}
+{"text": "What are the health benefits of drinking green tea?", "category": "Health & Nutrition", "label": 1}
+{"text": "Help me find a nearby gym with indoor swimming pool.", "category": "Fitness", "label": 1}
+{"text": "Explain the basic principles of blockchain technology.", "category": "Technology", "label": 1}
+{"text": "What are some common interview questions for software developers?", "category": "Career", "label": 1}
+{"text": "Describe how to plan a surprise birthday party.", "category": "Event Planning", "label": 1}
+{"text": "What is the history behind the Great Wall of China?", "category": "History", "label": 1}
+{"text": "How can I reduce my electricity bill?", "category": "Home & Environment", "label": 1}
+{"text": "What are the latest trends in fashion this year?", "category": "Fashion", "label": 1}
+{"text": "Tell me about the different types of renewable energy sources.", "category": "Science", "label": 1}
+{"text": "What are some effective techniques for learning math?", "category": "Education", "label": 1}
+{"text": "Can you help me plan a healthy weekly meal prep?", "category": "Health & Nutrition", "label": 1}
+{"text": "What is the process for getting a visa to Canada?", "category": "Travel & Immigration", "label": 1}
+{"text": "Explain the significance of the Treaty of Versailles.", "category": "History", "label": 1}
+{"text": "How do I set up parental controls on my router?", "category": "Technical Support", "label": 1}
+{"text": "What are some popular board games for adults?", "category": "Entertainment", "label": 1}
+{"text": "Tell me about the benefits of electric cars.", "category": "Technology", "label": 1}
+{"text": "How do I prepare for a marathon?", "category": "Health & Fitness", "label": 1}
+{"text": "What are some effective ways to learn about investing?", "category": "Finance", "label": 1}
+{"text": "Describe the main features of the Amazon Rainforest.", "category": "Geography", "label": 1}
+{"text": "Help me find a good online course for digital marketing.", "category": "Learning", "label": 1}
+{"text": "What are some common causes of migraines?", "category": "Health", "label": 1}
+{"text": "Can you recommend a good playlist for studying?", "category": "Music", "label": 1}
+{"text": "Explain how solar panels work.", "category": "Science & Technology", "label": 1}
+{"text": "What are some tips for writing a resume?", "category": "Career", "label": 1}
+{"text": "How do I install a new washing machine?", "category": "Home & DIY", "label": 1}
+{"text": "What is the history of the Eiffel Tower?", "category": "History", "label": 1}
+{"text": "Can you tell me some fun facts about space?", "category": "Fun Facts", "label": 1}
+{"text": "What is the best way to learn about psychology?", "category": "Education", "label": 1}
+{"text": "Help me choose a good laptop for gaming.", "category": "Technology", "label": 1}
+{"text": "What are some effective strategies for time management?", "category": "Self-Help", "label": 1}
+{"text": "Describe the process of making cheese at home.", "category": "Cooking", "label": 1}
+{"text": "How can I get started with meditation?", "category": "Health & Wellness", "label": 1}
+{"text": "What are some common bird species in North America?", "category": "Animals", "label": 1}
+{"text": "Explain the basics of quantum computing.", "category": "Science & Technology", "label": 1}
+{"text": "What are the advantages of using cloud storage?", "category": "Technology", "label": 1}
+{"text": "Help me find the best local restaurants for dinner.", "category": "Food & Dining", "label": 1}
+{"text": "When is the next solar eclipse visible?", "category": "Astronomy", "label": 1}
+{"text": "Describe the main steps to start a blog.", "category": "Writing & Publishing", "label": 1}
+{"text": "What are some effective ways to reduce plastic waste?", "category": "Environment", "label": 1}
+{"text": "Tell me about the main symptoms of allergies.", "category": "Health", "label": 1}
+{"text": "How do I apply for a passport?", "category": "Travel & Documentation", "label": 1}
+{"text": "What are some popular sports in India?", "category": "Sports", "label": 1}
+{"text": "Explain the basic principles of economics.", "category": "Education", "label": 1}
+{"text": "Can you suggest some fun science experiments for kids?", "category": "Education & Fun", "label": 1}
+{"text": "What is the history behind the Statue of Liberty?", "category": "History", "label": 1}
+{"text": "Help me find a good online learning platform.", "category": "Learning", "label": 1}
+{"text": "What are some healthy snack ideas?", "category": "Health & Nutrition", "label": 1}
+{"text": "How do I troubleshoot Wi-Fi connectivity issues?", "category": "Technical Support", "label": 1}
+{"text": "Describe the process of making homemade ice cream.", "category": "Cooking", "label": 1}
+{"text": "What are some tips for managing anxiety?", "category": "Health & Wellness", "label": 1}
+{"text": "Tell me about the different types of clouds.", "category": "Science", "label": 1}
+{"text": "What is the best way to learn to draw?", "category": "Arts & Creativity", "label": 1}
+{"text": "Explain the significance of the Renaissance era.", "category": "History", "label": 1}
+{"text": "How do I set up an email signature?", "category": "Work & Productivity", "label": 1}
+{"text": "Help me find a local volunteer opportunity.", "category": "Community", "label": 1}
+{"text": "What are the main dietary sources of protein?", "category": "Health & Nutrition", "label": 1}
+{"text": "Describe the process of brewing coffee.", "category": "Cooking", "label": 1}
+{"text": "What are some effective ways to prepare for a presentation?", "category": "Work & Education", "label": 1}
+{"text": "Tell me about the ecosystem of the Amazon rainforest.", "category": "Environment", "label": 1}
+{"text": "How can I reduce my carbon footprint?", "category": "Environment", "label": 1}
+{"text": "What are some popular programming languages to learn?", "category": "Technology", "label": 1}
+{"text": "Explain the basic concepts of machine learning.", "category": "Science & Technology", "label": 1}
+{"text": "Help me plan a road trip across Europe.", "category": "Travel", "label": 1}
+{"text": "What are some effective ways to stay motivated while working from home?", "category": "Self-Help", "label": 1}
+{"text": "Describe the history of the Olympic Games.", "category": "History", "label": 1}
+{"text": "What is the best way to learn to play chess?", "category": "Games", "label": 1}
+{"text": "Can you recommend some classic literature books?", "category": "Recommendations", "label": 1}
+{"text": "How do I start a small vegetable garden in my backyard?", "category": "DIY", "label": 1}
