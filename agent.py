@@ -6,12 +6,19 @@ Websocket_agent Agent Implementation
 Creates a websocket interface for the eventbus
 """
 
-import json
-import logging
 import os
+import sys
+import json
+import yaml
+import time
+import logging
+import importlib.util
 import re
 import uuid
-from typing import Dict, Any, Optional
+import asyncio
+import threading
+from typing import Dict, Any, Optional, List
+from datetime import datetime
 
 # For containerized agents, use the local base agent
 # This avoids dependencies on the semsubscription module
@@ -232,15 +239,37 @@ class Websocket_agent(BaseAgent):
         #     "another_keyword"
         # ])
     
+    def start_websocket_server(self):
+        """
+        Start the WebSocket server in a separate thread
+        """
+        # Import here to avoid circular imports
+        import websocket_server
+        
+        # Start the WebSocket server in a separate thread
+        logger.info("Starting WebSocket server in a separate thread")
+        server_thread = threading.Thread(target=websocket_server.start_server)
+        server_thread.daemon = True  # Thread will exit when main program exits
+        server_thread.start()
+        
+        # Store the server thread reference
+        self.server_thread = server_thread
+        
+        # Store the active connections reference
+        from event_handlers import active_connections
+        self.active_connections = active_connections
+        
+        logger.info("WebSocket server thread started")
+    
     def process_message(self, message) -> Optional[Dict[str, Any]]:
         """
-        Process domain-specific queries
+        Process websocket-related messages and relay events between the event bus and WebSocket clients.
         
         Args:
             message: The message to process (dict in containerized version)
             
         Returns:
-            Response data
+            Response data with WebSocket status or event relay confirmation
         """
         try:
             # Handle both Message objects and dictionary messages (for container compatibility)
@@ -257,48 +286,72 @@ class Websocket_agent(BaseAgent):
             logger.info(f"Processing message {message_id} with content: '{content[:50]}...'")
             logger.info(f"Message successfully received via event bus")
             
-            # Domain for {domain}
-            # Add your domain-specific processing logic here
-            
-            # Test confirmation response to show the message bus is working
-            if True:  # Always provide a response for testing
+            # Ensure WebSocket server is running
+            if not hasattr(self, 'server_thread'):
+                self.start_websocket_server()
+                
+            # Handle WebSocket connection status
+            if 'websocket status' in query or 'connection status' in query:
+                active_connections = getattr(self, 'active_connections', [])
                 return {
                     "agent": self.name,
-                    "response": f"Message received by {self.name}! This confirms the event bus is working properly.",
-                    "message_id": message_id,
-                    "content_preview": content[:100] + ("..." if len(content) > 100 else "")
+                    "response_type": "websocket_status",
+                    "active_connections": len(active_connections),
+                    "status": "active" if active_connections else "waiting for connections",
+                    "message_id": message_id
                 }
             
-            # Example pattern matching for various domain queries
-            # These are for when you customize the agent for your specific domain
+            # Handle WebSocket event relay requests
+            if 'relay' in query and ('event' in query or 'message' in query):
+                event_type = None
+                if 'new message' in query or 'message created' in query:
+                    event_type = 'new_message'
+                elif 'message updated' in query:
+                    event_type = 'message_updated'
+                elif 'agent interest' in query:
+                    event_type = 'agent_interest'
+                elif 'agent response' in query:
+                    event_type = 'agent_response'
+                elif 'agent status' in query:
+                    event_type = 'agent_status'
+                
+                if event_type:
+                    return {
+                        "agent": self.name,
+                        "response_type": "event_relay",
+                        "event_type": event_type,
+                        "relay_status": "initiated",
+                        "message_id": message_id,
+                        "timestamp": datetime.now().isoformat()
+                    }
+            
+            # Handle help requests
             if 'help' in query or 'hello' in query:
                 return {
                     "agent": self.name,
-                    "response": f"Hello! I'm {self.name}, an agent that {self.description.lower()}. How can I help you?"
+                    "response": f"Hello! I'm {self.name}, an agent that provides a WebSocket interface for the event bus. I can relay events between the event bus and connected WebSocket clients for real-time updates."
                 }
-            elif '{domain}' in query:
+            
+            # Handle WebSocket connection commands
+            if 'connect' in query and 'websocket' in query:
                 return {
                     "agent": self.name,
-                    "response": f"I detected a {domain} related query: {content}"
+                    "response_type": "connection_instructions",
+                    "response": "To connect to the WebSocket server, use: ws://[server-address]:8000/ws",
+                    "code_example": "const ws = new WebSocket('ws://localhost:8000/ws');",
+                    "message_id": message_id
                 }
-            #
-            # Example:
-            # if "weather" in query and ("forecast" in query or "today" in query):
-            #     return {
-            #         "agent": self.name,
-            #         "query_type": "weather_forecast",
-            #         "forecast": "Sunny with a high of 72°F"
-            #     }}
             
-            # Default response if no pattern matches
+            # For any other message, provide information about the WebSocket agent
             return {
                 "agent": self.name,
-                "query_type": "general_response",
-                "response": f"I received your query in the {domain} domain. This is a placeholder response."
+                "response_type": "info",
+                "response": f"I'm the WebSocket agent for the semantic subscription system. I maintain WebSocket connections with clients and relay events from the event bus. You can ask about 'websocket status', 'connection instructions', or request to 'relay events'.",
+                "message_id": message_id
             }
             
         except Exception as e:
-            logger.error(f"Error in Websocket_agent Agent processing: {e}")
+            logger.error(f"Error in Websocket_agent processing: {e}")
             return {
                 "agent": self.name,
                 "error": str(e),

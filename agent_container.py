@@ -225,6 +225,17 @@ def main():
         logger.info("Successfully subscribed to message events - using event-driven delivery")
     else:
         logger.info("Event subscription unavailable - falling back to polling mode")
+        
+    # Initialize the agent for WebSocket server access
+    agent = AgentClass()
+    
+    # Start the WebSocket server if the agent has the method
+    if hasattr(agent, 'start_websocket_server'):
+        logger.info("Starting WebSocket server...")
+        agent.start_websocket_server()
+        logger.info("WebSocket server started successfully")
+    else:
+        logger.warning("Agent does not have start_websocket_server method, WebSocket functionality will not be available")
     
     # Main processing loop
     try:
