@@ -162,3 +162,44 @@
 {"text": "Translate 'Good morning' to Japanese.", "category": "Language Translation", "label": 0}
 {"text": "How do I bake a chocolate cake?", "category": "Cooking Advice", "label": 0}
 {"text": "Sorry, I didn't understand that. Could you please rephrase?", "category": "Error/Clarification", "label": 0}
+{"text": "Can you recommend a good Italian restaurant nearby?", "category": "restaurant_recommendation", "label": 0}
+{"text": "What's the weather forecast for tomorrow?", "category": "weather_query", "label": 0}
+{"text": "Tell me a joke.", "category": "entertainment", "label": 0}
+{"text": "Set an alarm for 7 AM tomorrow.", "category": "reminder", "label": 0}
+{"text": "How do I reset my password?", "category": "technical_support", "label": 0}
+{"text": "What's the capital of France?", "category": "general_knowledge", "label": 0}
+{"text": "Play some relaxing music.", "category": "music_control", "label": 0}
+{"text": "Add milk and eggs to my shopping list.", "category": "shopping_list", "label": 0}
+{"text": "Translate 'Good morning' to Spanish.", "category": "translation", "label": 0}
+{"text": "What's the latest news on technology?", "category": "news_update", "label": 0}
+{"text": "Can you help me with my math homework?", "category": "educational_help", "label": 0}
+{"text": "Remind me to call mom at 5 PM.", "category": "reminder", "label": 0}
+{"text": "What's the stock price of Apple right now?", "category": "finance", "label": 0}
+{"text": "Book a flight to New York for next Friday.", "category": "travel_booking", "label": 0}
+{"text": "Convert 100 dollars to euros.", "category": "currency_conversion", "label": 0}
+{"text": "How do I get to the nearest subway station?", "category": "navigation", "label": 0}
+{"text": "Tell me a fun fact about space.", "category": "educational", "label": 0}
+{"text": "What's the definition of 'serendipity'?", "category": "dictionary", "label": 0}
+{"text": "Set a timer for 15 minutes.", "category": "timer", "label": 0}
+{"text": "Find me a vegan recipe for dinner.", "category": "cooking_recipe", "label": 0}
+{"text": "What movies are playing nearby?", "category": "entertainment", "label": 0}
+{"text": "Help me draft an email to my boss.", "category": "productivity", "label": 0}
+{"text": "What's the meaning of life?", "category": "philosophy", "label": 0}
+{"text": "Tell me about the history of the Eiffel Tower.", "category": "history", "label": 0}
+{"text": "How do I improve my public speaking skills?", "category": "educational", "label": 0}
+{"text": "What are some good workout routines?", "category": "fitness", "label": 0}
+{"text": "Remind me to pick up dry cleaning tomorrow.", "category": "reminder", "label": 0}
+{"text": "Can you find gluten-free restaurants nearby?", "category": "restaurant_search", "label": 0}
+{"text": "What's the latest score in the basketball game?", "category": "sports_update", "label": 0}
+{"text": "Help me plan a weekend trip to the mountains.", "category": "travel_planning", "label": 0}
+{"text": "What is the nutritional information for an avocado?", "category": "food_info", "label": 0}
+{"text": "Create a playlist for running.", "category": "music_control", "label": 0}
+{"text": "Tell me a poem by Robert Frost.", "category": "literature", "label": 0}
+{"text": "How do I set up a new email account?", "category": "technical_support", "label": 0}
+{"text": "Find me a nearby vegetarian restaurant.", "category": "restaurant_search", "label": 0}
+{"text": "What are some tips for practicing mindfulness?", "category": "wellness", "label": 0}
+{"text": "Help me find a good science podcast.", "category": "entertainment", "label": 0}
+{"text": "What's the population of Tokyo?", "category": "general_knowledge", "label": 0}
+{"text": "Can you tell me about the latest iPhone model?", "category": "technology", "label": 0}
+{"text": "Help me prepare for my job interview.", "category": "career_advice", "label": 0}
+{"text": "Schedule a meeting with the team next Monday.", "category": "calendar_management", "label": 0}
