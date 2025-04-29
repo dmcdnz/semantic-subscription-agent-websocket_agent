@@ -193,8 +193,11 @@ class Websocket_agent(BaseAgent):
                     from semsubscription.vector_db.embedding import EmbeddingEngine, InterestModel
                 except ImportError:
                     # Fall back to local implementation for containerized environments
-                    from .interest_model import CustomInterestModel as InterestModel
-                    from .embedding_engine import EmbeddingEngine
+                    # Use absolute imports instead of relative ones to avoid parent package errors
+                    import interest_model
+                    import embedding_engine
+                    InterestModel = interest_model.CustomInterestModel
+                    EmbeddingEngine = embedding_engine.EmbeddingEngine
                 
                 # Create the interest model first
                 if os.path.exists(interest_model_path):
