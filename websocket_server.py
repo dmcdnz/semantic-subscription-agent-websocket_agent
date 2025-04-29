@@ -3,6 +3,7 @@ import json
 import logging
 import asyncio
 import uvicorn
+import httpx
 from typing import List, Dict, Any, Optional
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Depends, Cookie, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -43,6 +44,44 @@ async def get_token(token: Optional[str] = Query(None)):
         return None
     return token
 
+async def verify_github_token(token: Optional[str] = None):
+    """
+    Verify GitHub authentication token with the core system.
+    
+    Args:
+        token: GitHub authentication token
+        
+    Returns:
+        bool: True if token is valid, False otherwise
+    """
+    if not token:
+        return False
+        
+    try:
+        # Try to validate the token with the core system
+        # URLs to try for validation
+        urls = [
+            "http://localhost:8888",
+            "http://host.docker.internal:8888",
+            "http://127.0.0.1:8888"
+        ]
+        
+        for url in urls:
+            try:
+                response = await httpx.AsyncClient().get(
+                    f"{url}/api/auth/verify",
+                    headers={"Authorization": f"Bearer {token}"}
+                )
+                if response.status_code == 200:
+                    return True
+            except:
+                continue
+                
+        return False
+    except Exception as e:
+        logger.error(f"Error verifying token: {e}")
+        return False
+
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket, token: Optional[str] = Depends(get_token)):
     """
@@ -52,11 +91,13 @@ async def websocket_endpoint(websocket: WebSocket, token: Optional[str] = Depend
         websocket: The WebSocket connection
         token: Optional auth token
     """
-    # Validate token (implement proper validation in production)
-    # This is a placeholder for authentication
-    if token is not None:
-        # Validate token logic would go here
-        logger.info(f"Client connected with token: {token[:8]}...")
+    # Validate GitHub token with the core system
+    is_authenticated = await verify_github_token(token)
+    
+    if not is_authenticated and token is not None:
+        await websocket.close(code=4001, reason="Invalid authentication token")
+        logger.warning(f"Rejected WebSocket connection due to invalid token")
+        return
     
     # Accept the connection
     await websocket.accept()
@@ -151,11 +192,21 @@ class MockEventBus:
 mock_event_bus = MockEventBus()
 
 # Subscribe to events
-mock_event_bus.subscribe("new_message", handle_new_message)
-mock_event_bus.subscribe("message_updated", handle_message_updated)
-mock_event_bus.subscribe("agent_interest", handle_agent_interest)
-mock_event_bus.subscribe("agent_response", handle_agent_response)
-mock_event_bus.subscribe("agent_status", handle_agent_status)
+def subscribe_to_events():
+    # Subscribe to event types that match the existing SSE implementation
+    mock_event_bus.subscribe("message.created", handle_new_message)
+    mock_event_bus.subscribe("message.updated", handle_message_updated)
+    mock_event_bus.subscribe("message.interest.registered", handle_agent_interest)
+    mock_event_bus.subscribe("message.processed", handle_agent_response)
+    mock_event_bus.subscribe("agent.status", handle_agent_status)
+    
+    # For backward compatibility, also subscribe to any alternate event names
+    mock_event_bus.subscribe("new_message", handle_new_message)
+    mock_event_bus.subscribe("agent_interest", handle_agent_interest)
+    mock_event_bus.subscribe("agent_response", handle_agent_response)
+    mock_event_bus.subscribe("agent_status", handle_agent_status)
+
+subscribe_to_events()
 
 @app.get("/") 
 def read_root():

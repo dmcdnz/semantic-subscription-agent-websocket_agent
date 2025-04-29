@@ -52,9 +52,13 @@ COPY fine_tuned_model/1_Pooling/ ./fine_tuned_model/1_Pooling/
 ENV AGENT_ID="${AGENT_ID}"
 ENV AGENT_NAME="${AGENT_NAME}"
 
-# Set Core API URL - use host.docker.internal for Windows/Mac, host network for Linux
-# For Linux compatibility, this will be overridden at runtime
-ENV CORE_API_URL="http://host.docker.internal:8888"
+# Set Core API URL with multiple fallback options
+# The container will try these URLs in sequence
+ENV CORE_API_URL="http://localhost:8888"
+ENV ALTERNATE_CORE_API_URLS="http://host.docker.internal:8888,http://127.0.0.1:8888"
+
+# Set the polling interval to check for messages
+ENV POLLING_INTERVAL="5"
 
 # WebSocket server port
 ENV PORT="8000"

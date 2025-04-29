@@ -71,13 +71,53 @@ logger = logging.getLogger(__name__)
 # Get environment variables
 AGENT_ID = os.environ.get("AGENT_ID", "unknown")
 AGENT_NAME = os.environ.get("AGENT_NAME", "Unknown Agent")
-CORE_API_URL = os.environ.get("CORE_API_URL", "http://host.docker.internal:8888")
+
+# Get the main core API URL and any alternates
+CORE_API_URL = os.environ.get("CORE_API_URL", "http://localhost:8888")
+ALTERNATE_CORE_API_URLS = os.environ.get("ALTERNATE_CORE_API_URLS", "").split(",")
+
+# Get polling interval with default of 5 seconds
+POLLING_INTERVAL = float(os.environ.get("POLLING_INTERVAL", "5"))
+
+# Function to try API request with multiple URLs
+def try_api_request(endpoint, method="get", **kwargs):
+    """
+    Try API request with all available URLs, falling back to alternates if the main one fails
+    """
+    # Start with the main URL
+    urls_to_try = [CORE_API_URL] + ALTERNATE_CORE_API_URLS
+    
+    # Remove any empty URLs
+    urls_to_try = [url for url in urls_to_try if url]
+    
+    last_error = None
+    for url in urls_to_try:
+        try:
+            full_url = f"{url}{endpoint}"
+            logger.debug(f"Trying API request to {full_url}")
+            
+            if method.lower() == "get":
+                response = requests.get(full_url, **kwargs)
+            elif method.lower() == "post":
+                response = requests.post(full_url, **kwargs)
+            else:
+                raise ValueError(f"Unsupported HTTP method: {method}")
+                
+            return response
+        except Exception as e:
+            logger.debug(f"API request to {url} failed: {e}")
+            last_error = e
+    
+    # If we get here, all URLs failed
+    logger.error(f"All API connection attempts failed. Last error: {last_error}")
+    raise last_error
 
 def register_with_core_system():
     """Register this agent with the core system"""
     try:
-        response = requests.post(
-            f"{CORE_API_URL}/api/agents/register",
+        response = try_api_request(
+            "/api/agents/register",
+            method="post",
             json={
                 "agent_id": AGENT_ID,
                 "name": AGENT_NAME,
@@ -99,9 +139,12 @@ def process_messages():
     """Poll for messages to process"""
     try:
         # Check for pending messages using the API for containerized agents
-        response = requests.get(
-            f"{CORE_API_URL}/api/messages/pending",
-            params={"agent_id": AGENT_ID}
+        response = try_api_request(
+            "/api/messages/pending",
+            method="get",
+            params={
+                "agent_id": AGENT_ID
+            }
         )
         
         if response.status_code == 200:
@@ -121,13 +164,12 @@ def subscribe_to_events():
     """Subscribe agent to the event-driven system"""
     try:
         # Register for new message events with direct message delivery
-        response = requests.post(
-            f"{CORE_API_URL}/api/agents/subscribe",
+        response = try_api_request(
+            f"/api/agents/{AGENT_ID}/subscribe",
+            method="post",
             json={
-                "agent_id": AGENT_ID,
-                "name": AGENT_NAME,
-                "events": ["message.created"],
-                "direct_delivery": True  # Request direct message delivery
+                "subscription_type": "direct",
+                "event_types": ["message.created"]
             }
         )
         
@@ -169,8 +211,9 @@ def process_message(message):
         
         # First phase: Register interest with the event-driven system
         # This corresponds to the AgentInterestService in the core system
-        interest_response = requests.post(
-            f"{CORE_API_URL}/api/messages/{message['id']}/interest",
+        interest_response = try_api_request(
+            f"/api/messages/{message['id']}/interest",
+            method="post",
             json={
                 "agent_id": AGENT_ID,
                 "name": AGENT_NAME,
@@ -190,8 +233,9 @@ def process_message(message):
                     result['agent_id'] = AGENT_ID
                 
                 # Submit processing result to core system
-                process_response = requests.post(
-                    f"{CORE_API_URL}/api/messages/{message['id']}/process",
+                process_response = try_api_request(
+                    f"/api/messages/{message['id']}/process",
+                    method="post",
                     json={
                         "agent_id": AGENT_ID,
                         "result": result
@@ -241,7 +285,7 @@ def main():
     try:
         while True:
             process_messages()
-            time.sleep(5)  # Poll every 5 seconds
+            time.sleep(POLLING_INTERVAL)  # Use configurable polling interval
     except KeyboardInterrupt:
         logger.info("Shutting down agent container")
 
